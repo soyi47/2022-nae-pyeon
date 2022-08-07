@@ -7,17 +7,12 @@ import MyTeamCard from "@/pages/MainPage/components/MyTeamCard";
 import TeamCreateButton from "@/pages/MainPage/components/TeamCreateButton";
 import EmptyMyTeamList from "@/pages/MainPage/components/EmptyMyTeamList";
 
-import { getMyTeams } from "@/api/team";
 import { CustomError } from "@/types";
 import useIntersect from "@/hooks/useIntersect";
+import useGetMyTeams from "@/pages/MainPage/hooks/useGetMyTeams";
 
 const TEAM_PAGING_COUNT = 10;
 
-interface MyTeamListResponse {
-  teams: Team[];
-  currentPage: number;
-  totalCount: number;
-}
 interface Team {
   id: number;
   name: string;
@@ -45,29 +40,19 @@ const MainPage = () => {
     isFetching,
     isError,
     isLoading,
-  } = useInfiniteQuery<MyTeamListResponse>(
-    ["my-teams"],
-    getMyTeams(TEAM_PAGING_COUNT),
-    {
-      getNextPageParam: (lastPage) => {
-        if (lastPage.currentPage * TEAM_PAGING_COUNT < lastPage.totalCount) {
-          return lastPage.currentPage + 1;
-        }
-      },
-    }
-  );
+  } = useGetMyTeams(TEAM_PAGING_COUNT);
 
   if (isLoading) {
-    return <div>로딩 중</div>;
+    return <div>로딩 중 - in component</div>;
   }
 
-  if (isError) {
-    if (axios.isAxiosError(getMyTeamListError) && getMyTeamListError.response) {
-      const customError = getMyTeamListError.response.data as CustomError;
-      return <div>{customError.message}</div>;
-    }
-    return <div>에러</div>;
-  }
+  // if (isError) {
+  //   if (axios.isAxiosError(getMyTeamListError) && getMyTeamListError.response) {
+  //     const customError = getMyTeamListError.response.data as CustomError;
+  //     return return throw;
+  //   }
+  //   return <div>에러</div>;
+  // }
 
   if (!myTeamListResponse) {
     return <div>에러</div>;

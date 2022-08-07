@@ -30,7 +30,8 @@ const teamHandlers = [
       teams: myTeams.slice(page * count, page * count + count),
     };
 
-    return res(ctx.json(result));
+    // return res(ctx.json(result));
+    return res(ctx.status(401));
   }),
 
   // 전체 모임 조회

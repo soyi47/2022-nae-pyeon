@@ -73,4 +73,6 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
-export { UserContext, UserProvider };
+const UserConsumer = UserContext.Consumer;
+
+export { UserContext, UserProvider, UserConsumer };

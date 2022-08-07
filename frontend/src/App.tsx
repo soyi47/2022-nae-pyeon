@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Global, ThemeProvider } from "@emotion/react";
 import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -27,6 +27,7 @@ import { useSnackbar } from "@/context/SnackbarContext";
 import Snackbar from "@/components/Snackbar";
 
 import { queryClient } from "@/api";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const App = () => {
   const { isOpened } = useSnackbar();
@@ -43,9 +44,13 @@ const App = () => {
                 <Route
                   path="/"
                   element={
-                    <RequireLogin>
-                      <MainPage />
-                    </RequireLogin>
+                    <ErrorBoundary>
+                      <Suspense fallback={<div>Suspense!</div>}>
+                        <RequireLogin>
+                          <MainPage />
+                        </RequireLogin>
+                      </Suspense>
+                    </ErrorBoundary>
                   }
                 />
                 <Route

@@ -50,8 +50,8 @@ export interface ResponseSentMessages {
 }
 
 export type CustomError = {
-  errorCode: number;
-  message: string;
+  errorCode: string | null;
+  message: string | null;
 };
 
 export type ValueOf<T> = T[keyof T];
