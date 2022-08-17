@@ -18,10 +18,14 @@ jobs:
         with:
           node-version: 16
 
-      - name: yarn install, start
+      - name: yarn install, build
         run: |
           yarn install
-          yarn start
+          yarn build
 
       - name: Run Cypress tests
+
         uses: cypress-io/github-action@v4
+        with:
+          start: yarn start
+          wait-on: "http://localhost:3000"
