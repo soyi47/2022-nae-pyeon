@@ -1,17 +1,28 @@
-name: End-to-end tests
+name: Cypress Tests
+
 on: [push]
+
 jobs:
-  cypress-run:
-    runs-on: windows-latest
+  install:
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node16.13.0-chrome95-ff94
+      options: --user 1001
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Run E2E tests
+        uses: actions/checkout@v3
+
+      - name: Cypress install
         uses: cypress-io/github-action@v4
+        working-directory: "/frontend"
         with:
-          working-directory: "./frontend"
-          start: "yarn cypress:run"
-          wait-on: "http://localhost:3000"
-          # let's see if the Test Runner handles url in the config
-          # https://github.com/cypress-io/cypress/issues/5466
-          config: baseUrl=http://localhost:3000
+          runTests: false
+        # report machine parameters
+        run: |
+          yarn cypress info
+          node --version
+          node -p 'os.cpus()'
+          yarn types
+          yarn lint
+          yarn test:unit:ci
+          yarn build:ci
