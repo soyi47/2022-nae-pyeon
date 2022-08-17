@@ -8,8 +8,6 @@ describe("로그인한 사용자 동작", () => {
     cy.clearCookies();
     cy.setCookie("accessToken", "mockAccessToken");
 
-    cy.reload();
-
     cy.intercept("GET", "/api/v1/members/me", {
       body: {
         id: 123,
@@ -17,6 +15,8 @@ describe("로그인한 사용자 동작", () => {
         email: "email@email.com",
       },
     }).as("getMe");
+
+    cy.reload();
   });
 
   it("방문하기", () => {
