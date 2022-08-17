@@ -10,6 +10,8 @@ describe("로그인한 사용자 동작", () => {
     cy.visit("http://localhost:3000");
   });
 
+  it("방문은 하냐...", () => {});
+
   it("가입한 모임이 없는 경우, 참여한 모임이 없다는 안내 메시지를 확인할 수 있다.", () => {
     cy.window().then((window) => {
       const { worker, rest } = window.msw;
