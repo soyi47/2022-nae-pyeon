@@ -18,11 +18,10 @@ jobs:
         with:
           runTests: false
         # report machine parameters
-        run: |
-          yarn cypress info
-          node --version
-          node -p 'os.cpus()'
-          yarn types
-          yarn lint
-          yarn test:unit:ci
-          yarn build:ci
+      - run: yarn cypress info
+      - run: node --version
+      - run: node -p 'os.cpus()'
+      - run: yarn types
+      - run: yarn lint
+      - run: yarn test:unit:ci
+      - run: yarn build:ci
