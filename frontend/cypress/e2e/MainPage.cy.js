@@ -4,10 +4,11 @@ describe("로그인한 사용자 동작", () => {
   beforeEach(() => {
     Cypress.Cookies.debug(true);
 
+    cy.visit("http://localhost:3000");
     cy.clearCookies();
     cy.setCookie("accessToken", "mockAccessToken");
 
-    cy.visit("http://localhost:3000");
+    cy.reload("http://localhost:3000");
   });
 
   it("방문은 하냐...", () => {});
