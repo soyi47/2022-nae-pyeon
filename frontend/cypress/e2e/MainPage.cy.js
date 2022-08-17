@@ -8,7 +8,7 @@ describe("로그인한 사용자 동작", () => {
     cy.clearCookies();
     cy.setCookie("accessToken", "mockAccessToken");
 
-    cy.reload("http://localhost:3000");
+    cy.reload();
   });
 
   it("방문은 하냐...", () => {});
