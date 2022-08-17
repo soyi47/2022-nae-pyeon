@@ -15,5 +15,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
+          working-directory: "./frontend"
           # Specify Browser since container image is compile with Firefox
           browser: firefox
