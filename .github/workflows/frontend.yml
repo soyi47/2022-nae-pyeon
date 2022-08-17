@@ -18,11 +18,12 @@ jobs:
         with:
           node-version: 16
 
-      - name: yarn install, build
+      - name: yarn install, start
         run: |
           yarn install
-          yarn build
+          yarn start
 
       - name: Run Cypress tests
         run: yarn cypress:run
+        wait-on: "http://localhost:3000"
         continue-on-error: true
