@@ -9,7 +9,7 @@ jobs:
       - name: Run E2E tests
         uses: cypress-io/github-action@v4
         with:
-          working-directory: "./frontend";
+          working-directory: "./frontend"
           start: "yarn cypress:run"
           wait-on: "http://localhost:3000"
           # let's see if the Test Runner handles url in the config
