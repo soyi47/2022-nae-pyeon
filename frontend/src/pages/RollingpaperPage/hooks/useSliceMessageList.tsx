@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import { divideArrayByIndexRemainder } from "@/util";
+import { EmotionJSX } from "@emotion/react/types/jsx-namespace";
 
-import { Message } from "@/types";
-
-const useSliceMessageList = (messageList: Message[]) => {
-  const [slicedMessageLists, setSlicedMessageLists] = useState<Message[][]>(
-    Array.from(Array(4), () => [])
-  );
+const useSliceMessageList = (messageList: (Element | EmotionJSX.Element)[]) => {
+  const [slicedMessageLists, setSlicedMessageLists] = useState<
+    (Element | EmotionJSX.Element)[][]
+  >(Array.from(Array(4), () => []));
 
   const updateSlicedMessageListByWindowWidth = () => {
     const width = window.innerWidth;
