@@ -1,4 +1,8 @@
 import { Message, Rollingpaper, Team, TeamMember } from ".";
+import { PickWithPrefix } from "naepyeon-types";
+
+type RollingpaperId = PickWithPrefix<Rollingpaper, "id", "rollingpaper">;
+type TeamId = PickWithPrefix<Team, "id", "team">;
 
 // kakao oauth
 export interface postKakaoOauthRequest {
@@ -25,32 +29,26 @@ export interface GetMySentMessagesRequest {
 
 // message
 export interface PostMessageRequest
-  extends Pick<Message, "content" | "color" | "anonymous" | "secret"> {
-  rollingpaperId: Rollingpaper["id"];
-}
+  extends Pick<Message, "content" | "color" | "anonymous" | "secret">,
+    RollingpaperId {}
 export interface PutMessageRequest
-  extends Pick<Message, "id" | "content" | "color" | "anonymous" | "secret"> {
-  rollingpaperId: Rollingpaper["id"];
-}
+  extends Pick<Message, "id" | "content" | "color" | "anonymous" | "secret">,
+    RollingpaperId {}
 
-export interface DeleteMessageRequest {
-  rollingpaperId: Rollingpaper["id"];
+export interface DeleteMessageRequest extends RollingpaperId {
   id: Message["id"];
 }
 
 // rollingpaper
-export interface GetRollingpaperRequest {
-  teamId: Team["id"];
+export interface GetRollingpaperRequest extends TeamId {
   id: Rollingpaper["id"];
 }
 
-export interface PostTeamRollingpaperRequest {
-  teamId: Team["id"];
+export interface PostTeamRollingpaperRequest extends TeamId {
   title: Rollingpaper["title"];
 }
 
-export interface PostMemberRollingpaperRequest {
-  teamId: Team["id"];
+export interface PostMemberRollingpaperRequest extends TeamId {
   title: Rollingpaper["title"];
   addresseeId: TeamMember["id"];
 }

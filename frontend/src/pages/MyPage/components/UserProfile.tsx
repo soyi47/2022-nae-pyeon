@@ -8,7 +8,7 @@ import LineButton from "@/components/LineButton";
 import UnderlineInput from "@/components/UnderlineInput";
 
 import { REGEX } from "@/constants";
-import { ValueOf } from "@/types";
+import { ValueOf } from "naepyeon-types";
 
 import Pencil from "@/assets/icons/bx-pencil.svg";
 

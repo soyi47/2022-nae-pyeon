@@ -1,3 +1,4 @@
+import { PickWithPrefix, ValueOf } from "naepyeon-types";
 import { RECIPIENT } from "@/constants";
 
 export interface Team {
@@ -41,16 +42,13 @@ export interface TeamMember {
 }
 
 export interface ReceivedRollingpaper
-  extends Pick<Rollingpaper, "id" | "title"> {
-  teamId: Team["id"];
-  teamName: Team["name"];
-}
+  extends Pick<Rollingpaper, "id" | "title">,
+    PickWithPrefix<Team, "id" | "name", "team"> {}
 
-export interface SentMessage extends Pick<Message, "id" | "content" | "color"> {
-  teamId: Team["id"];
-  teamName: Team["name"];
-  rollingpaperId: Rollingpaper["id"];
-  rollingpaperTitle: Rollingpaper["title"];
+export interface SentMessage
+  extends Pick<Message, "id" | "content" | "color">,
+    PickWithPrefix<Team, "id" | "name", "team">,
+    PickWithPrefix<Rollingpaper, "id" | "title", "rollingpaper"> {
   to: Rollingpaper["to"];
 }
 
@@ -58,7 +56,5 @@ export type CustomError = {
   errorCode: number;
   message: string;
 };
-
-export type ValueOf<T> = T[keyof T];
 
 export type Recipient = ValueOf<typeof RECIPIENT>;

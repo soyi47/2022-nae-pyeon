@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from "react";
 import styled from "@emotion/styled";
 
-import { ValueOf } from "@/types";
+import { ValueOf } from "naepyeon-types";
 import { SOCIAL_LOGIN_PLATFORM } from "@/constants";
 
 import GoogleLogo from "@/assets/images/logo-google.png";

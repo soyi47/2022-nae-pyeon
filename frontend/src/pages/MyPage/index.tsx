@@ -11,7 +11,7 @@ import {
   MYPAGE_MESSAGE_PAGING_COUNT,
 } from "@/constants";
 
-import { ValueOf } from "@/types";
+import { ValueOf } from "naepyeon-types";
 import useReadUserProfile from "@/pages/MyPage/hooks/useReadUserProfile";
 import useReadSentMessages from "@/pages/MyPage/hooks/useReadSentMessages";
 import useReadReceivedRollingpapers from "@/pages/MyPage/hooks/useReadReceivedRollingpapers";
