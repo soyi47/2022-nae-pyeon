@@ -18,7 +18,7 @@ interface LetterPaperProps {
   messageList: Message[];
 }
 
-const LetterPaper = ({ to, recipientType, messageList }: LetterPaperProps) => {
+const LetterPaper = ({ to, recipientType, messageList }) => {
   const { isWrite, handleWriteButtonClick, handleWriteEnd } = useMessageWrite();
 
   const elementList = useMemo(() => {
