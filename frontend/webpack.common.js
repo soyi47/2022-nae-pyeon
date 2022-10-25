@@ -33,6 +33,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: "babel-loader",
+      },
+      {
         test: /\.(png|jpe?g|gif)$/i,
         type: "asset/resource",
       },
