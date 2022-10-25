@@ -31,5 +31,8 @@ jobs:
       - name: Check Type
         run: tsc --noEmit
 
+      - name: Check Lint
+        run: eslint src/**
+
       - name: Build page
         run: yarn build:dev
