@@ -31,7 +31,7 @@ const MessageList = ({ lastPage }: MessageListProps) => {
     <StyledListWithPaging>
       <StyledMessageList>
         {data.messages.map((message) => (
-          <MessageListItem {...message} />
+          <MessageListItem {...message} key={message.id} />
         ))}
       </StyledMessageList>
       <StyledPaging>

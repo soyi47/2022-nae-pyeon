@@ -6,7 +6,7 @@
     "plugin:react/recommended",
     "prettier"
   ],
-  "ignorePatterns": ["*.js"],
+  "ignorePatterns": ["*.svg", "*.png", "src/mocks/**"],
   "env": {
     "browser": true,
     "commonjs": true,
