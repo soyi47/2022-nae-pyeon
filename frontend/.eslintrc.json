@@ -3,9 +3,10 @@
     "eslint:recommended",
     "plugin:import/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
     "prettier"
   ],
-  "ignorePatterns": ["*.js"],
+  "ignorePatterns": ["*.svg", "*.png", "src/mocks/**"],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -17,13 +18,16 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "import"],
+  "plugins": ["@typescript-eslint", "react", "import"],
   "rules": {
     "no-console": "off",
     "strict": ["error", "global"],
     "curly": "warn",
 
     "import/no-unresolved": "off",
+
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
 
     "@typescript-eslint/no-empty-interface": [
       "error",
