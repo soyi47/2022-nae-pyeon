@@ -31,11 +31,8 @@ jobs:
       - name: Check Type
         run: tsc --noEmit
 
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          prettier: true
+      - name: Check Lint
+        uses: eslint src/**
 
       - name: Build page
         run: yarn build:dev
